@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Evaluación de Gestión - Hospital Nuestra Señora de Nieva</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/estilos.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background-color: #f9f9f9;
+    }
+
+    .contenedor {
+      display: flex;
+    }
+
+    .barra-lateral {
+      width: 200px;
+      background-color: #338c36;
+      color: white;
+      padding: 20px;
+      height: 100vh;
+    }
+
+    .logo {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    .menu-item {
+      display: block;
+      color: white;
+      text-decoration: none;
+      margin: 10px 0;
+      font-weight: bold;
+    }
+
+    .contenido {
+      flex: 1;
+      padding: 40px;
+    }
+
+    .encabezado h1 {
+      font-size: 24px;
+      color: #338c36;
+    }
+
+    .subtitulo {
+      color: #444;
+      margin-bottom: 40px;
+    }
+
+    .botones {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .btn {
+      background-color: #eabd27;
+      padding: 15px 25px;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #d4a914;
+    }
+
+    .carrusel {
+      overflow: hidden;
+      width: 100%;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .slides {
+      display: flex;
+      gap: 20px;
+      animation: desplazamiento 12s infinite linear;
+    }
+
+    .slides img {
+      width: 300px;
+      border-radius: 12px;
+    }
+
+    @keyframes desplazamiento {
+      0% { transform: translateX(0); }
+      33% { transform: translateX(-320px); }
+      66% { transform: translateX(-640px); }
+      100% { transform: translateX(0); }
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 10000;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-contenido {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+      max-width: 400px;
+      margin: 15% auto;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .cerrar {
+      position: absolute;
+      right: 20px;
+      top: 10px;
+      font-size: 24px;
+      cursor: pointer;
+      color: #888;
+    }
+
+    .cerrar:hover {
+      color: black;
+    }
+
+    .toggle-btn {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 22px;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="contenedor">
+    <nav class="barra-lateral" id="sidebar">
+      <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+      <img src="./img/logoHospital.jpg" alt="Logo del Hospital" class="logo">
+      <ul>
+        <li><a href="index.html" class="menu-item">Inicio</a></li>
+        <li><a href="#" class="menu-item" id="salirBtn">Salir</a></li>
+      </ul>
+    </nav>
+
+    <div class="contenido">
+      <header class="encabezado">
+        <h1>BIENVENIDOS/AS AL SISTEMA DE EVALUACIÓN DE GESTIÓN DEL HOSPITAL NUESTRA SEÑORA DE NIEVA</h1>
+        <p class="subtitulo">
+          Este sistema permite evaluar mensualmente las condiciones de infraestructura, recursos tecnológicos,
+          medicamentos, insumos y recursos humanos del hospital.
+        </p>
+      </header>
+
+      <div class="botones">
+        <a href="infraestructura.html" class="btn">Infraestructura</a>
+        <a href="tecnologia.html" class="btn">Recursos Tecnológicos</a>
+        <a href="insumos.html" class="btn">Medicamentos e Insumos</a>
+        <a href="recursoshumanos.html" class="btn">Recursos Humanos</a>
+        <a href="login.html" class="btn">Vista Dirección</a>
+      </div>
+
+      <div class="carrusel">
+        <div class="slides">
+          <img src="./img/foto1.jpg" alt="Imagen Hospital 1">
+          <img src="./img/logoHospital.jpg" alt="Imagen Hospital 2">
+          <img src="./img/foto2.jpg" alt="Imagen Hospital 3">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de salida -->
+  <div id="miModal" class="modal">
+    <div class="modal-contenido">
+      <span class="cerrar" id="cerrarModal">&times;</span>
+      <h2>Muchas gracias por su colaboración</h2>
+      <p>¡Esperamos verte pronto!</p>
+      <button onclick="window.location.href='index.html'">Salir</button>
+    </div>
+  </div>
+
+  <script>
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('colapsada');
+    }
+
+    document.getElementById('salirBtn').addEventListener('click', function (e) {
+      e.preventDefault();
+      document.getElementById('miModal').style.display = "block";
+    });
+
+    document.getElementById('cerrarModal').addEventListener('click', function () {
+      document.getElementById('miModal').style.display = "none";
+    });
+
+    window.onclick = function (event) {
+      if (event.target == document.getElementById('miModal')) {
+        document.getElementById('miModal').style.display = "none";
+      }
+    };
+  </script>
+
+</body>
+</html>

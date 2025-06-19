@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Vista Dirección</title>
+  <link rel="stylesheet" href="./css/estilos.css">
+</head>
+<body class="oculto">
+  <!-- Spinner de carga -->
+  <div id="loading" class="loading">
+    <div class="spinner"></div>
+    <p>Verificando sesión...</p>
+  </div>
+
+  <div class="contenedor">
+    <!-- Barra lateral -->
+    <nav class="barra-lateral">
+      <img src="./img/logoHospital.jpg" alt="Logo del Hospital" class="logo">
+      <ul>
+        <li><a href="index.html" class="menu-item">Inicio</a></li>
+        <li><a href="#" id="btnSalir" class="menu-item">Salir</a></li>
+      </ul>
+    </nav>
+
+    <!-- Contenido principal -->
+    <div class="contenido">
+      <header>
+        <h1>Panel de Evaluación - Dirección Hospital</h1>
+      </header>
+
+      <!-- Filtros -->
+      <div class="filtros">
+        <label for="area">Área:</label>
+        <select id="area">
+          <option value="recursos_humanos">Recursos Humanos</option>
+          <option value="recursos_tecnologicos" selected>Recursos Tecnológicos</option>
+          <option value="infraestructura">Infraestructura</option>
+          <option value="medicamentos_e_insumos">Medicamentos e Insumos</option>
+        </select>
+
+        <label for="periodo">Período:</label>
+        <select id="periodo">
+          <option value="diario">Día</option>
+          <option value="semanal">Semana</option>
+          <option value="mensual" selected>Mes</option>
+          <option value="anual">Año</option>
+        </select>
+      </div>
+
+      <!-- Panel visual -->
+      <section id="panel">
+        <div class="tarjeta-semaforo">
+          <h2 id="titulo-area">Área seleccionada</h2>
+          <p id="texto-periodo">Evaluación por período</p>
+
+          <div class="semaforo">
+            <div class="luz rojo"></div>
+            <div class="luz amarillo"></div>
+            <div class="luz verde"></div>
+          </div>
+
+          <p id="porcentaje">--%</p>
+          <p class="estado-texto">Estado: --</p>
+        </div>
+
+        <div class="grafico">
+          <canvas id="grafico-estadisticas"></canvas>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- Librerías y scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Firebase config y código modular -->
+  <script type="module" src="./js/direccion.js"></script>
+</body>
+</html>
